@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 import Coin from "./Coin";
+import TrendingCoins from "./TrendingCoins";
 
 function App() {
   const [coins, setCoins] = useState([]);
@@ -26,6 +27,16 @@ function App() {
     coin.name.toLowerCase().includes(search.toLowerCase())
   );
 
+  const filteredTrendingCoins = coins.filter(
+    (coin) => coin.price_change_percentage_24h >= 3
+  );
+
+  const sortedCoins = filteredTrendingCoins.sort(
+    (a, b) => b.price_change_percentage_24h - a.price_change_percentage_24h
+  );
+
+  const limitedCoins = sortedCoins.slice(0, 5);
+
   return (
     <div className="coin-app">
       <div className="coin-search">
@@ -39,6 +50,23 @@ function App() {
           />
         </form>
       </div>
+      <h2>Trending Coins</h2>
+      {limitedCoins.map((coin) => {
+        return (
+          <>
+            <TrendingCoins
+              key={coin.id}
+              name={coin.name}
+              image={coin.image}
+              symbol={coin.symbol}
+              volume={coin.total_volume}
+              price={coin.current_price}
+              priceChange={coin.price_change_percentage_24h}
+              marketCap={coin.market_cap}
+            />
+          </>
+        );
+      })}
       {filteredCoins.map((coin) => {
         return (
           <Coin
