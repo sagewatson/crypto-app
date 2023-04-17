@@ -3,6 +3,7 @@ import axios from "axios";
 import "./App.css";
 import Coin from "./Coin";
 import TrendingCoins from "./TrendingCoins";
+import cryptoTracker from "./images/crypto-tracker.png";
 
 function App() {
   const [coins, setCoins] = useState([]);
@@ -40,26 +41,35 @@ function App() {
   return (
     <div className="coin-app">
       <div className="trending-coins-container">
+        <div className="nav-bar">
+          <div className="logo">
+            <img src={cryptoTracker} alt="crypto tracker logo" />
+          </div>
+        </div>
         <h2 className="trending-coins-title">Trending Coins</h2>
-        {limitedCoins.map((coin) => {
-          return (
-            <>
-              <TrendingCoins
-                key={coin.id}
-                name={coin.name}
-                image={coin.image}
-                symbol={coin.symbol}
-                volume={coin.total_volume}
-                price={coin.current_price}
-                priceChange={coin.price_change_percentage_24h}
-                marketCap={coin.market_cap}
-              />
-            </>
-          );
-        })}
+        {filteredTrendingCoins.length === 0 ? (
+          <p className="no-trending-coins">No trending coins at the moment!</p>
+        ) : (
+          limitedCoins.map((coin) => {
+            return (
+              <>
+                <TrendingCoins
+                  key={coin.id}
+                  name={coin.name}
+                  image={coin.image}
+                  symbol={coin.symbol}
+                  volume={coin.total_volume}
+                  price={coin.current_price}
+                  priceChange={coin.price_change_percentage_24h}
+                  marketCap={coin.market_cap}
+                />
+              </>
+            );
+          })
+        )}
       </div>
       <div className="coin-search">
-        <h1 className="coin-text">Search a currency</h1>
+        <h2 className="coin-text">Search a currency</h2>
         <form>
           <input
             type="text"
