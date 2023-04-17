@@ -39,6 +39,25 @@ function App() {
 
   return (
     <div className="coin-app">
+      <div className="trending-coins-container">
+        <h2 className="trending-coins-title">Trending Coins</h2>
+        {limitedCoins.map((coin) => {
+          return (
+            <>
+              <TrendingCoins
+                key={coin.id}
+                name={coin.name}
+                image={coin.image}
+                symbol={coin.symbol}
+                volume={coin.total_volume}
+                price={coin.current_price}
+                priceChange={coin.price_change_percentage_24h}
+                marketCap={coin.market_cap}
+              />
+            </>
+          );
+        })}
+      </div>
       <div className="coin-search">
         <h1 className="coin-text">Search a currency</h1>
         <form>
@@ -50,23 +69,7 @@ function App() {
           />
         </form>
       </div>
-      <h2>Trending Coins</h2>
-      {limitedCoins.map((coin) => {
-        return (
-          <>
-            <TrendingCoins
-              key={coin.id}
-              name={coin.name}
-              image={coin.image}
-              symbol={coin.symbol}
-              volume={coin.total_volume}
-              price={coin.current_price}
-              priceChange={coin.price_change_percentage_24h}
-              marketCap={coin.market_cap}
-            />
-          </>
-        );
-      })}
+
       {filteredCoins.map((coin) => {
         return (
           <Coin

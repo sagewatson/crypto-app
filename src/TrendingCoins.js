@@ -1,4 +1,5 @@
 import React from "react";
+import "./TrendingCoins.css";
 
 const TrendingCoins = ({
   name,

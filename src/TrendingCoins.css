@@ -1,0 +1,70 @@
+.trending-coin-container {
+    display: flex;
+    justify-content: center;
+}
+
+.trending-coin-row {
+    display: flex;
+    flex-direction: row;
+    justify-items: start;
+    align-items: center;
+    height: 80px;
+    width: 500px;
+    border-radius: 8px;
+    border: none;
+    background-image: linear-gradient(
+      -225deg, 
+      #b80000 0%,
+      #b85621 48%,
+      #000000 100%
+    );
+  margin: 0.5rem;
+}
+
+.trending-coin {
+    display: flex;
+    align-items: center;
+    padding-right: 24px;
+    min-width: 300px;  
+}
+
+.trending-coin img {
+    height: 30px;
+    width: 30px;
+    margin: 0 10px;
+   
+}
+
+.trending-coin h1 {
+    font-size: 16px;
+    width: 150px;
+}
+
+.trending-coin-symbol {
+    text-transform: uppercase;
+    margin-left: 10px;
+}
+
+.trending-coin-data {
+    display: flex; 
+    text-align: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.trending-coin-price {
+    width: 110px;
+}
+
+.trending-coin-percent {
+    width: 80px;
+}
+
+.red {
+  color: #f00606;
+}
+
+.green {
+    color: #11d811;
+}
+
