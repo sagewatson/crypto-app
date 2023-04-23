@@ -12,9 +12,9 @@ npm install
 Then, run the development server:
 
 ```
-npm run dev
+npm run start
 # or
-yarn dev
+yarn start
 ```
 
 
